@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Partner Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
+  <style>
     body {
-  font-family: 'Poppins', sans-serif;
-  padding: 2rem;
-  background: #ffffff;
-  color: #002147;
-}
+      font-family: 'Poppins', sans-serif;
+      padding: 2rem;
+      background: #ffffff;
+      color: #002147;
+    }
     h1 { font-size: 24px; margin-bottom: 1rem; }
     .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
     .summary-row-2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
@@ -23,36 +23,76 @@
   text-align: center;
   color: #002147;
   font-weight: bold;
-    .bar-container { background: #ddd; border-radius: 20px; overflow: visible; height: 30px; position: relative; }
-    .bar-fill { height: 100%; background-color: #4caf50; text-align: center; color: white; line-height: 30px; font-weight: bold; border-radius: 20px 0 0 20px; z-index: 1; position: relative; }
-    .bar-market { background-color: #ff9800; height: 30px; position: absolute; top: 0; left: 60%; width: 2px; z-index: 2; }
-    .bar-label { font-size: 12px; font-weight: bold; color: #555; margin-top: 4px; text-align: right; }
-    table {
-  border-collapse: collapse;
-  width: 100%;
-  background: #ffffff;
-  display: block;
-  max-height: 400px;
-  overflow-y: auto;
-  color: #002147;
-  border: 1px solid #002147;
 }
-    th, td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #002147;
-  background: #ffffff;
+      .bar-market { background-color: #ff9800; height: 30px; position: absolute; top: 0; left: 60%; width: 2px; z-index: 2; }
+      .bar-label { font-size: 12px; font-weight: bold; color: #555; margin-top: 4px; text-align: right; }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        background: #ffffff;
+        display: block;
+        max-height: 400px;
+        overflow-y: auto;
+        color: #002147;
+        border: 1px solid #002147;
+        table-layout: auto;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #002147;
+        background: #ffffff;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+      th {
+        background: #002147;
+        color: white;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+  .bar-container {
+  background: #ddd;
+  border-radius: 20px;
+  overflow: visible;
+  height: 30px;
+  position: relative;
 }
-    th {
-  background: #002147;
+
+.bar-fill {
+  height: 100%;
+  background-color: #4caf50;
+  text-align: center;
   color: white;
+  line-height: 30px;
   font-weight: bold;
-  position: sticky;
+  border-radius: 20px 0 0 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.bar-market {
+  background-color: #ff9800;
+  height: 30px;
+  position: absolute;
   top: 0;
+  left: 60%;
+  width: 2px;
   z-index: 2;
 }
-  </style>
+
+.bar-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #555;
+  margin-top: 4px;
+  text-align: right;
+}
+</style>
 </head>
+  
 <body oncontextmenu="return false">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
   <img src="https://anandhu-tech.github.io/product-platform/PartnerRight.png" alt="PartnerRight" style="height: 60px;">
@@ -78,22 +118,26 @@
   </div>
     </div>
   </div>
-    <div class="summary-row-2">
+  <div class="summary-row-2" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
     <div class="summary-box">
-      <strong>Loan Approval Rate vs Market:</strong>
-      <div class="bar-container">
-        <div class="bar-fill" id="approvalBar" style="width: 0%">0%</div>
-        <div class="bar-market"></div>
-      </div>
-      <div class="bar-label">Market Avg: 60%</div>
+      <strong>Total Sanctioned:</strong>
+      <div id="loanSanctioned">Loading...</div>
     </div>
     <div class="summary-box">
       <strong>Total Disbursements:</strong>
       <div id="loanDisbursed">Loading...</div>
     </div>
     <div class="summary-box">
-      <strong>Projected Non-Invoiced Revenue:</strong>
+      <strong>Projected Revenue:</strong>
       <div id="nonInvoicedRevenue">Loading...</div>
+    </div>
+    <div class="summary-box">
+      <strong>Approval Rate vs Market:</strong>
+      <div class="bar-container">
+        <div class="bar-fill" id="approvalBar" style="width: 0%">0%</div>
+        <div class="bar-market"></div>
+      </div>
+      <div class="bar-label">Market Avg: 60%</div>
     </div>
   </div>
 
@@ -129,8 +173,21 @@
   </div>
 
   <h2 style="margin-top: 2rem; font-size: 20px;">📄 Student Status Update</h2>
-<label for="nameFilter">Filter by Student Name:</label>
-<input type="text" id="nameFilter" placeholder="Enter name..." style="margin-bottom: 1rem; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+<!--Filter Section-->
+<div style="display:flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+  <div>
+    <label for="loanStageFilter">Filter by Loan Stage:</label><br>
+    <select id="loanStageFilter" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+      <option value="">All Stages</option>
+    </select>
+  </div>
+  <div>
+    <label for="nameFilter">Filter by Student Name:</label><br>
+    <input id="nameFilter" type="text" placeholder="Enter student name..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;" />
+  </div>
+  <button onclick="downloadTableAsExcel()" style="margin-left: 1rem; padding: 0.5rem 1rem; background-color: #004085; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Download Excel</button>
+  </div>
+</div></label>
 <div style="overflow-x: auto; max-height: 500px; overflow-y: auto;">
 <table id="dataTable">
       <thead id="tableHead" style="position: sticky; top: 0; background: #eee; z-index: 1;"></thead>
@@ -140,9 +197,33 @@
 
   <!-- PapaParse CDN for proper CSV parsing -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script>
+function downloadTableAsExcel() {
+  const table = document.getElementById("dataTable");
+  let csv = [];
+  const rows = table.querySelectorAll("tr");
+
+  for (let row of rows) {
+    let cols = Array.from(row.querySelectorAll("th, td"));
+    csv.push(cols.map(col => '"' + col.innerText.replace(/"/g, '""') + '"').join(","));
+  }
+
+  const csvString = csv.join("");
+  const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "student_status_data.csv");
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
   <script>
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSfBO_kpqjjBgGPWbHyLuX6g4dI7twPVgMqtPfoFoIuGKOSAY_2S5ac_sfWdACXQ8nNC5fmWWIUAu7x/pub?output=csv";
-
+//Fetch and ProcesS Google Sheet Data
     async function fetchCSVData() {
       const response = await fetch(SHEET_CSV_URL);
       const csvText = await response.text();
@@ -163,6 +244,24 @@
       const filteredRows = rows.slice(1).filter(row => 
         !row.includes("Break Row") && row[partnerCodeIndex]?.trim() === "Tc Global"
       );
+       const loanStageSet = new Set();
+      filteredRows.forEach(row => {
+        const stage = row[loanStageIndex]?.trim();
+        if (stage) loanStageSet.add(stage);
+      });
+      const loanStageFilter = document.getElementById("loanStageFilter");
+      loanStageFilter.innerHTML = '<option value="">All Stages</option>' + [...loanStageSet].sort().map(stage => `<option value="${stage}">${stage}</option>`).join('');
+
+      loanStageFilter.addEventListener("change", function () {
+        const selectedStage = this.value.toLowerCase();
+        const rows = document.querySelectorAll("#dataTable tbody tr");
+        rows.forEach(row => {
+          const cell = row.cells[loanStageIndex];
+          const stage = cell?.textContent.toLowerCase().trim();
+          row.style.display = !selectedStage || stage === selectedStage ? "" : "none";
+        });
+      });
+      
       //Total Record of Partner
       document.getElementById("totalRecords").textContent = filteredRows.length;
       
@@ -196,6 +295,13 @@
         const stage = row[loanStageIndex]?.toLowerCase().trim();
         return stage === "loan disbursed";
       }).length;
+      document.getElementById("loanDisbursed").textContent = loanDisbursedCount;
+
+      const loanSanctionedCount = filteredRows.filter(row => {
+        const stage = row[loanStageIndex]?.toLowerCase().trim();
+        return stage === "loan sanctioned" || stage === "loan disbursed";
+      }).length;
+      document.getElementById("loanSanctioned").textContent = loanSanctionedCount;
       document.getElementById("loanDisbursed").textContent = loanDisbursedCount;
 
       const projectedRevenue = filteredRows.reduce((sum, row) => {
@@ -256,14 +362,18 @@ approvalBar.style.width = approvalRate + "%";
 
     fetchCSVData();
 
-      document.getElementById("nameFilter").addEventListener("input", function() {
+      document.getElementById("nameFilter").addEventListener("input", function () {
   const filterValue = this.value.toLowerCase();
   const table = document.getElementById("dataTable");
   const headerCells = table.querySelectorAll("thead th");
+
   let nameColIndex = -1;
   headerCells.forEach((th, idx) => {
-    if (th.textContent.trim().toLowerCase() === "student name") nameColIndex = idx;
- 
+    if (th.textContent.trim().toLowerCase() === "student name") {
+      nameColIndex = idx;
+    }
+  });
+
   if (nameColIndex === -1) return;
 
   const rows = table.querySelectorAll("tbody tr");
@@ -271,7 +381,6 @@ approvalBar.style.width = approvalRate + "%";
     const cellText = row.cells[nameColIndex]?.textContent.toLowerCase();
     row.style.display = cellText && cellText.includes(filterValue) ? "" : "none";
   });
-});
       });
 
       function sortTable(colIndex) {
@@ -289,8 +398,9 @@ approvalBar.style.width = approvalRate + "%";
         rows.forEach(row => tbody.appendChild(row));
         table.setAttribute("data-sort-dir", isAscending ? "asc" : "desc");
       }
-    setInterval(fetchCSVData, 10000);
+    setInterval(fetchCSVData, 60000);
 
+    //Compute the Top 5 Partners for Leaderboard
       function getTopPartnersByCount(data, partnerIndex, dateIndex) {
         const cutoff = new Date();
         cutoff.setDate(cutoff.getDate() - 30);
@@ -307,7 +417,7 @@ approvalBar.style.width = approvalRate + "%";
           .sort((a, b) => b[1] - a[1])
           .slice(0, 5);
       }
-
+//Disable Developer Tools Access
     document.addEventListener('keydown', function (e) {
       if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
       if (e.key === 'F12') e.preventDefault();
