@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Partner Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+<style>
     body {
-      font-family: 'Poppins', sans-serif;
-      padding: 2rem;
-      background: #ffffff;
-      color: #002147;
-    }
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+  background: #ffffff;
+  color: #002147;
+}
     h1 { font-size: 24px; margin-bottom: 1rem; }
     .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
     .summary-row-2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
@@ -23,76 +23,36 @@
   text-align: center;
   color: #002147;
   font-weight: bold;
+    .bar-container { background: #ddd; border-radius: 20px; overflow: visible; height: 30px; position: relative; }
+    .bar-fill { height: 100%; background-color: #4caf50; text-align: center; color: white; line-height: 30px; font-weight: bold; border-radius: 20px 0 0 20px; z-index: 1; position: relative; }
+    .bar-market { background-color: #ff9800; height: 30px; position: absolute; top: 0; left: 60%; width: 2px; z-index: 2; }
+    .bar-label { font-size: 12px; font-weight: bold; color: #555; margin-top: 4px; text-align: right; }
+    table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #ffffff;
+  display: block;
+  max-height: 400px;
+  overflow-y: auto;
+  color: #002147;
+  border: 1px solid #002147;
 }
-      .bar-market { background-color: #ff9800; height: 30px; position: absolute; top: 0; left: 60%; width: 2px; z-index: 2; }
-      .bar-label { font-size: 12px; font-weight: bold; color: #555; margin-top: 4px; text-align: right; }
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        background: #ffffff;
-        display: block;
-        max-height: 400px;
-        overflow-y: auto;
-        color: #002147;
-        border: 1px solid #002147;
-        table-layout: auto;
-      }
-      th, td {
-        padding: 8px;
-        text-align: left;
-        border: 1px solid #002147;
-        background: #ffffff;
-        white-space: normal;
-        word-wrap: break-word;
-      }
-      th {
-        background: #002147;
-        color: white;
-        font-weight: bold;
-        position: sticky;
-        top: 0;
-        z-index: 2;
-      }
-  .bar-container {
-  background: #ddd;
-  border-radius: 20px;
-  overflow: visible;
-  height: 30px;
-  position: relative;
+    th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #002147;
+  background: #ffffff;
 }
-
-.bar-fill {
-  height: 100%;
-  background-color: #4caf50;
-  text-align: center;
+    th {
+  background: #002147;
   color: white;
-  line-height: 30px;
   font-weight: bold;
-  border-radius: 20px 0 0 20px;
-  z-index: 1;
-  position: relative;
-}
-
-.bar-market {
-  background-color: #ff9800;
-  height: 30px;
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 60%;
-  width: 2px;
   z-index: 2;
 }
-
-.bar-label {
-  font-size: 12px;
-  font-weight: bold;
-  color: #555;
-  margin-top: 4px;
-  text-align: right;
-}
-</style>
+  </style>
 </head>
-  
 <body oncontextmenu="return false">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
   <img src="https://anandhu-tech.github.io/product-platform/PartnerRight.png" alt="PartnerRight" style="height: 60px;">
@@ -174,20 +134,19 @@
 
   <h2 style="margin-top: 2rem; font-size: 20px;">📄 Student Status Update</h2>
 <!--Filter Section-->
-<div style="display:flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
-  <div>
-    <label for="loanStageFilter">Filter by Loan Stage:</label><br>
-    <select id="loanStageFilter" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
-      <option value="">All Stages</option>
-    </select>
-  </div>
+<div style="display:flex; gap: 1rem; align-items: flex-end; margin-bottom: 1rem;">
   <div>
     <label for="nameFilter">Filter by Student Name:</label><br>
     <input id="nameFilter" type="text" placeholder="Enter student name..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;" />
   </div>
-  <button onclick="downloadTableAsExcel()" style="margin-left: 1rem; padding: 0.5rem 1rem; background-color: #004085; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Download Excel</button>
+  <div>
+    <label for="loanStageFilter">Filter by Loan Stage:</label><br>
+    <select id="loanStageFilter" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"></select>
   </div>
-</div></label>
+  <div>
+    <button onclick="downloadTableAsExcel()" style="margin-top: 1.5rem; padding: 0.5rem 1rem; background-color: #002147; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Download Excel</button>
+  </div>
+</div>
 <div style="overflow-x: auto; max-height: 500px; overflow-y: auto;">
 <table id="dataTable">
       <thead id="tableHead" style="position: sticky; top: 0; background: #eee; z-index: 1;"></thead>
@@ -196,25 +155,25 @@
   </div>
 
   <!-- PapaParse CDN for proper CSV parsing -->
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-<script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js">
 function downloadTableAsExcel() {
   const table = document.getElementById("dataTable");
-  let csv = [];
+  if (!table) return;
+
+  let csvContent = "";
   const rows = table.querySelectorAll("tr");
 
-  for (let row of rows) {
-    let cols = Array.from(row.querySelectorAll("th, td"));
-    csv.push(cols.map(col => '"' + col.innerText.replace(/"/g, '""') + '"').join(","));
-  }
+  rows.forEach(row => {
+    const cols = row.querySelectorAll("th, td");
+    const rowData = Array.from(cols).map(col => `"${col.textContent.replace(/"/g, '""')}"`).join(",");
+    csvContent += rowData + "
+";
+  });
 
-  const csvString = csv.join("");
-  const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
   const link = document.createElement("a");
-  link.setAttribute("href", url);
-  link.setAttribute("download", "student_status_data.csv");
+  link.href = URL.createObjectURL(blob);
+  link.download = "PartnerDashboardData.csv";
   link.style.display = "none";
   document.body.appendChild(link);
   link.click();
@@ -261,7 +220,6 @@ function downloadTableAsExcel() {
           row.style.display = !selectedStage || stage === selectedStage ? "" : "none";
         });
       });
-      
       //Total Record of Partner
       document.getElementById("totalRecords").textContent = filteredRows.length;
       
