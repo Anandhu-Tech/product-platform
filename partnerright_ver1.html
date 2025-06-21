@@ -5,64 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Partner Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
+  <style>
     body {
-  font-family: 'Poppins', sans-serif;
-  padding: 2rem;
-  background: #ffffff;
-  color: #002147;
-}
+      font-family: 'Poppins', sans-serif;
+      padding: 2rem;
+      background: #ffffff;
+      color: #002147;
+    }
     h1 { font-size: 24px; margin-bottom: 1rem; }
     .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
     .summary-row-2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
     .summary-box {
-  background: #e6f0ff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  text-align: center;
-  color: #002147;
-  font-weight: bold;
-    .bar-container { background: #ddd; border-radius: 20px; overflow: visible; height: 30px; position: relative; }
-    .bar-fill { height: 100%; background-color: #4caf50; text-align: center; color: white; line-height: 30px; font-weight: bold; border-radius: 20px 0 0 20px; z-index: 1; position: relative; }
-    .bar-market { background-color: #ff9800; height: 30px; position: absolute; top: 0; left: 60%; width: 2px; z-index: 2; }
-    .bar-label { font-size: 12px; font-weight: bold; color: #555; margin-top: 4px; text-align: right; }
-    .table-wrapper {
-  overflow-x: auto;
-  max-height: 500px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  background: #ffffff;
-  color: #002147;
-  border: 1px solid #002147;
-  table-layout: fixed;
-}
-    th, td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #002147;
-  background: #ffffff;
-  word-wrap: break-word;
-  word-break: break-word;
-}
-    th {
-  background: #002147;
-  color: white;
-  font-weight: bold;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
+      background: #e6f0ff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      text-align: center;
+      color: #002147;
+      font-weight: bold;
+      .bar-container { background: #ddd; border-radius: 20px; overflow: visible; height: 30px; position: relative; }
+      .bar-fill { height: 100%; background-color: #4caf50; text-align: center; color: white; line-height: 30px; font-weight: bold; border-radius: 20px 0 0 20px; z-index: 1; position: relative; }
+      .bar-market { background-color: #ff9800; height: 30px; position: absolute; top: 0; left: 60%; width: 2px; z-index: 2; }
+      .bar-label { font-size: 12px; font-weight: bold; color: #555; margin-top: 4px; text-align: right; }
+      .table-wrapper {
+        overflow-x: auto;
+        max-height: 500px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        background: #ffffff;
+        color: #002147;
+        border: 1px solid #002147;
+        table-layout: fixed;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #002147;
+        background: #ffffff;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+      th {
+        background: #002147;
+        color: white;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
   </style>
 </head>
+  
 <body oncontextmenu="return false">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
   <img src="https://anandhu-tech.github.io/product-platform/PartnerRight.png" alt="PartnerRight" style="height: 60px;">
   <img src="https://anandhu-tech.github.io/product-platform/TC%20Global%20Logo.png" alt="TC Global Logo" style="height: 60px;">
-</div>
+  </div>
+
+  <!-- Sumary Section -->
   <div class="summary">
     <div class="summary-box">
       <strong>Total Leads Shared:</strong>
@@ -79,8 +81,6 @@ table {
     <div class="summary-box">
       <strong>Loan Approvals:</strong>
       <div id="loanApproved">Loading...</div>
-    </div>
-  </div>
     </div>
   </div>
   <div class="summary-row-2" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
@@ -106,25 +106,27 @@ table {
     </div>
   </div>
 
-  <!-- 📢 Announcement Section -->
+  <!--  Announcement Section -->
   <div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; background-color: #002147; color: #ffffff; padding: 1rem; border-radius: 8px; border: 1px solid #ffffff;">
-  <div style="border-right: 1px solid white; padding-right: 1rem;">
-    <div style="text-align: center; font-weight: bold;"><span style="font-size: 20px;">🏅 June Partner Reward</span><br><img src="https://anandhu-tech.github.io/product-platform/Partner%20Reward.png" alt="Partner Reward" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" /></div>
-    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; background-color: #002147; color: #ffffff; padding: 1rem; border-radius: 8px; border: 1px solid #ffffff;">
+      <div style="border-right: 1px solid white; padding-right: 1rem;">
+        <div style="text-align: center; font-weight: bold;"><span style="font-size: 20px;">🏅 June Partner Reward</span><br><img src="https://anandhu-tech.github.io/product-platform/Partner%20Reward.png" alt="Partner Reward" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" />
+        </div>
+      </div>
   <div style="text-align: center; font-weight: bold; border-right: 1px solid white; padding: 0 1rem;">
   <span style="font-size: 20px;">📊 Top 5 Contenders</span><br>
   <ul id="leaderboard" style="list-style: none; padding-left: 0; margin-top: 0.5rem;"></ul>
-  <div style="margin-top: 3rem; font-size: 14px; color: #ffffff; text-align: left;">
-    <strong>Eligibility Criteria:</strong><br>
-    1. Minimum of 10 Leads to be shared with Documents<br>
-    2. Last Date of Lead Sharing: 30 June, 2025
-  </div></div>
-    
-  <div style="text-align: center; font-weight: bold; padding-left: 1rem;">
-  <span style="font-size: 20px;">🏦 Special Lender Offer</span><br><img src="https://anandhu-tech.github.io/product-platform/Loan%20Challenger.jpg" alt="Special Lender Offer" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" />
-      <a href="https://apply.gradright.com/gr-ed-loan-challenge/?utm_source=B2B%25Referral&utm_medium=TC%20Global" target="_blank" style="display: inline-block; margin-top: 0.75rem; padding: 0.5rem 1rem; background-color: #004085; color: white; text-decoration: none; border-radius: 4px; font-weight: bold;">Accept Challenge</a>
-      </div></div>
+    <div style="margin-top: 3rem; font-size: 14px; color: #ffffff; text-align: left;">
+      <strong>Eligibility Criteria:</strong><br>
+      1. Minimum of 10 Leads to be shared with Documents<br>
+      2. Last Date of Lead Sharing: 30 June, 2025
+    </div>
+  </div>
+    <div style="text-align: center; font-weight: bold; padding-left: 1rem;">
+    <span style="font-size: 20px;">🏦 Special Lender Offer</span><br><img src="https://anandhu-tech.github.io/product-platform/Loan%20Challenger.jpg" alt="Special Lender Offer" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" />
+        <a href="https://apply.gradright.com/gr-ed-loan-challenge/?utm_source=B2B%25Referral&utm_medium=TC%20Global" target="_blank" style="display: inline-block; margin-top: 0.75rem; padding: 0.5rem 1rem; background-color: #004085; color: white; text-decoration: none; border-radius: 4px; font-weight: bold;">Accept Challenge</a>
+    </div>
+    </div>
   </div>
 
   <!-- 🛠️ Action Section -->
@@ -137,20 +139,21 @@ table {
     </div>
   </div>
 
+  <!--Table Filter Section-->
   <h2 style="margin-top: 2rem; font-size: 20px;">📄 Student Status Update</h2>
-<!--Filter Section-->
-<div style="display:flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
-  <div>
-    <label for="nameFilter">Filter by Student Name:</label><br>
-    <input id="nameFilter" type="text" placeholder="Enter student name..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;" />
+  <div style="display:flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+    <div>
+      <label for="nameFilter">Filter by Student Name:</label><br>
+      <input id="nameFilter" type="text" placeholder="Enter student name..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+    <div>
+      <label for="loanStageFilter">Filter by Loan Stage:</label><br>
+      <select id="loanStageFilter" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"></select>
+    </div>
   </div>
-  <div>
-    <label for="loanStageFilter">Filter by Loan Stage:</label><br>
-    <select id="loanStageFilter" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"></select>
-  </div>
-</div>Filter by Loan Stage:</label>
-<div class="table-wrapper">
-<table id="dataTable">
+  Filter by Loan Stage:</label>
+  <div class="table-wrapper">
+    <table id="dataTable">
       <thead id="tableHead" style="position: sticky; top: 0; background: #eee; z-index: 1;"></thead>
       <tbody id="tableBody"></tbody>
     </table>
@@ -160,15 +163,13 @@ table {
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script>
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSfBO_kpqjjBgGPWbHyLuX6g4dI7twPVgMqtPfoFoIuGKOSAY_2S5ac_sfWdACXQ8nNC5fmWWIUAu7x/pub?output=csv";
-//Fetch and ProcesS Google Sheet Data
+    //Fetch and ProcesS Google Sheet Data
     async function fetchCSVData() {
       const response = await fetch(SHEET_CSV_URL);
       const csvText = await response.text();
       const parsed = Papa.parse(csvText.trim(), { header: false });
       const rows = parsed.data.filter(row => row.length > 1 && row.join('').trim() !== '');
-
       if (rows.length === 0) return;
-
       const headers = rows[0];
       const breakIndex = headers.findIndex(h => h.trim().toLowerCase() === "break row");
       const partnerCodeIndex = headers.findIndex(h => h.trim().toLowerCase() === "partner code");
@@ -177,27 +178,28 @@ table {
       const amountIndex = headers.findIndex(h => h.trim().toLowerCase() === "amount");
       const paymentDoneIndex = headers.findIndex(h => h.trim().toLowerCase() === "payment done");
       const visibleHeaders = breakIndex !== -1 ? headers.slice(0, breakIndex) : headers;
-
       const filteredRows = rows.slice(1).filter(row => 
-        !row.includes("Break Row") && row[partnerCodeIndex]?.trim() === "Tc Global"
+        !row.includes("Break Row") && row[partnerCodeIndex]?.trim() === "Tc Global" //Partner Code Here
       );
-       const loanStageSet = new Set();
+      const loanStageSet = new Set();
+      
+      //Filter by Stage Code
       filteredRows.forEach(row => {
         const stage = row[loanStageIndex]?.trim();
         if (stage) loanStageSet.add(stage);
       });
       const loanStageFilter = document.getElementById("loanStageFilter");
       loanStageFilter.innerHTML = '<option value="">All Stages</option>' + [...loanStageSet].sort().map(stage => `<option value="${stage}">${stage}</option>`).join('');
-
       loanStageFilter.addEventListener("change", function () {
         const selectedStage = this.value.toLowerCase();
         const rows = document.querySelectorAll("#dataTable tbody tr");
         rows.forEach(row => {
           const cell = row.cells[loanStageIndex];
           const stage = cell?.textContent.toLowerCase().trim();
-          row.style.display = !selectedStage || stage === selectedStage ? "" : "none";
+          row.style.visibility = !selectedStage || stage === selectedStage ? "visible" : "collapse";
         });
       });
+      
       //Total Record of Partner
       document.getElementById("totalRecords").textContent = filteredRows.length;
       
@@ -226,13 +228,14 @@ table {
       }).length;
       document.getElementById("loanApproved").textContent = loanApprovalCount;
      
-      //Total Loan Disbursed Cases cases
+      //Total Loan Disbursed cases
       const loanDisbursedCount = filteredRows.filter(row => {
         const stage = row[loanStageIndex]?.toLowerCase().trim();
         return stage === "loan disbursed";
       }).length;
       document.getElementById("loanDisbursed").textContent = loanDisbursedCount;
 
+      //Total Loan Sanctioned cases
       const loanSanctionedCount = filteredRows.filter(row => {
         const stage = row[loanStageIndex]?.toLowerCase().trim();
         return stage === "loan sanctioned" || stage === "loan disbursed";
@@ -240,6 +243,7 @@ table {
       document.getElementById("loanSanctioned").textContent = loanSanctionedCount;
       document.getElementById("loanDisbursed").textContent = loanDisbursedCount;
 
+      //Projected Revenue Calculation
       const projectedRevenue = filteredRows.reduce((sum, row) => {
         const stage = row[loanStageIndex]?.toLowerCase().trim();
         const payment = row[paymentDoneIndex]?.trim();
@@ -249,10 +253,10 @@ table {
         }
         return sum;
       }, 0);
-
       const projectedCommission = projectedRevenue * 0.007;
       document.getElementById("nonInvoicedRevenue").textContent = `₹ ${Math.round(projectedCommission).toLocaleString()}`;
 
+      //Leaderboard Code
       const sharedOnIndex = headers.findIndex(h => h.trim().toLowerCase() === "shared on");
       const leaderboardRows = rows.slice(1).filter(row => !row.includes("Break Row"));
       const leaderboard = getTopPartnersByCount(leaderboardRows, partnerCodeIndex, sharedOnIndex);
@@ -266,14 +270,14 @@ table {
             <span style='text-align: right;'>${count} pts</span>
           </li>`).join('');
       const approvalRate = loanAppliedCount > 0 ? Math.round((loanApprovalCount / loanAppliedCount) * 100) : 0;
-approvalBar.style.width = approvalRate + "%";
+      approvalBar.style.width = approvalRate + "%";
       approvalBar.textContent = approvalRate + "%";
 
+      //Student Status Table Code
       const tableHead = document.getElementById("tableHead");
       const tableBody = document.getElementById("tableBody");
       tableHead.innerHTML = "";
       tableBody.innerHTML = "";
-
       const headerRow = document.createElement("tr");
       visibleHeaders.forEach((col, index) => {
         const th = document.createElement("th");
@@ -283,7 +287,6 @@ approvalBar.style.width = approvalRate + "%";
         headerRow.appendChild(th);
       });
       tableHead.appendChild(headerRow);
-
       filteredRows.forEach(row => {
         const tr = document.createElement("tr");
         const visibleCells = breakIndex !== -1 ? row.slice(0, breakIndex) : row;
@@ -295,45 +298,39 @@ approvalBar.style.width = approvalRate + "%";
         tableBody.appendChild(tr);
       });
     }
-
     fetchCSVData();
-
-      document.getElementById("nameFilter").addEventListener("input", function () {
-  const filterValue = this.value.toLowerCase();
-  const table = document.getElementById("dataTable");
-  const headerCells = table.querySelectorAll("thead th");
-
-  let nameColIndex = -1;
-  headerCells.forEach((th, idx) => {
-    if (th.textContent.trim().toLowerCase() === "student name") {
-      nameColIndex = idx;
-    }
-  });
-
-  if (nameColIndex === -1) return;
-
-  const rows = table.querySelectorAll("tbody tr");
-  rows.forEach(row => {
-    const cellText = row.cells[nameColIndex]?.textContent.toLowerCase();
-    row.style.display = cellText && cellText.includes(filterValue) ? "" : "none";
-  });
+    document.getElementById("nameFilter").addEventListener("input", function () {
+      const filterValue = this.value.toLowerCase();
+      const table = document.getElementById("dataTable");
+      const headerCells = table.querySelectorAll("thead th");
+      let nameColIndex = -1;
+      headerCells.forEach((th, idx) => {
+        if (th.textContent.trim().toLowerCase() === "student name") {
+        nameColIndex = idx;}
       });
+      if (nameColIndex === -1) return;
+      const rows = table.querySelectorAll("tbody tr");
+      rows.forEach(row => {
+        const cellText = row.cells[nameColIndex]?.textContent.toLowerCase();
+        row.style.visibility = cellText && cellText.includes(filterValue) ? "visible" : "collapse";
+      });
+     });
 
-      function sortTable(colIndex) {
+    function sortTable(colIndex) {
         const table = document.getElementById("dataTable");
         const tbody = table.tBodies[0];
         const rows = Array.from(tbody.rows);
         const isAscending = table.getAttribute("data-sort-dir") !== "asc";
-
         rows.sort((a, b) => {
           const aText = a.cells[colIndex].textContent.trim().toLowerCase();
           const bText = b.cells[colIndex].textContent.trim().toLowerCase();
           return isAscending ? aText.localeCompare(bText) : bText.localeCompare(aText);
         });
-
         rows.forEach(row => tbody.appendChild(row));
         table.setAttribute("data-sort-dir", isAscending ? "asc" : "desc");
       }
+
+    //Time for Auto Refresh
     setInterval(fetchCSVData, 60000);
 
     //Compute the Top 5 Partners for Leaderboard
@@ -353,7 +350,8 @@ approvalBar.style.width = approvalRate + "%";
           .sort((a, b) => b[1] - a[1])
           .slice(0, 5);
       }
-//Disable Developer Tools Access
+    
+    //Disable Developer Tools Access
     document.addEventListener('keydown', function (e) {
       if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
       if (e.key === 'F12') e.preventDefault();
