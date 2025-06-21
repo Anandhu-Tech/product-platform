@@ -28,9 +28,12 @@
       .bar-market { background-color: #ff9800; height: 30px; position: absolute; top: 0; left: 60%; width: 2px; z-index: 2; }
       .bar-label { font-size: 12px; font-weight: bold; color: #555; margin-top: 4px; text-align: right; }
       .table-wrapper {
-        overflow-x: auto;
-        max-height: 500px;
-      }
+  overflow-y: auto;
+  max-height: 500px;
+  min-width: 100%;
+  display: block;
+  position: relative;
+}
       table {
         border-collapse: collapse;
         width: 100%;
@@ -153,9 +156,9 @@
   </div>
   Filter by Loan Stage:</label>
   <div class="table-wrapper">
-    <table id="dataTable">
-      <thead id="tableHead" style="position: sticky; top: 0; background: #eee; z-index: 1;"></thead>
-      <tbody id="tableBody"></tbody>
+    <table id="dataTable" style="border-collapse: collapse; width: 100%; table-layout: fixed;">
+      <thead id="tableHead" style="position: sticky; top: 0; background: #002147; color: #ffffff; z-index: 2;"></thead>
+      <tbody id="tableBody" style="overflow-y: auto;"></tbody>
     </table>
   </div>
 
